@@ -1,12 +1,14 @@
-function validation() {
-  /*
-  validate the :
-  email,
-  password,
-  username
-  */
-
+const joi = require('joi');
+const signupValidation =  {
+username:joi.string().required(),
+  email: joi.string().email().required(),
+  password: joi.number().integer().required()
+}
+const loginValidation =  {
+  email: joi.string().email().required(),
+  password: joi.number().integer().required()
 }
 module.exports = {
-Validation : validation
+  signupValidation : signupValidation,
+  loginValidation : loginValidation
 }

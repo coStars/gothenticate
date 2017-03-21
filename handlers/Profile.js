@@ -1,6 +1,5 @@
 function profile(req, res) {
-    /*handler for profile route
-*/
+    res.view('profile')
     }
 module.exports = {
 profile : profile

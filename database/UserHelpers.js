@@ -34,8 +34,13 @@ function updateUserInfo(data, cb) {
     }
     */
 }
+function getUserByPassword(email,password, cb) {
+    dbUtils.select(client, 'users', `email='${email}' AND password='${password}'`, cb)
+}
+
 module.exports = {
   getUserByEmail : getUserByEmail,
   updateUserInfo : updateUserInfo,
-  createUser : createUser
+  createUser : createUser,
+  getUserByPassword : getUserByPassword
 }

@@ -1,3 +1,5 @@
+const login = require('../handlers/Login.js');
+const validation = require('../handlers/Validation');
 const loginGET = {
     method: "",
     path: "/login",
@@ -7,8 +9,13 @@ const loginGET = {
 const loginPOST = {
     method: "POST",
     path: "/login",
-    handler: (req, res) => {}
-};
+    handler: login.login,
+    config :{
+      validate : {
+        payload : validation.loginValidation
+      }
+    }
+  }
 
 module.exports = {
     loginPOST: loginPOST,

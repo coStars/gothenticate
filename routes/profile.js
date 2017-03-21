@@ -1,8 +1,9 @@
+const profile = require('../handlers/Profile.js')
 const profileGET = {
     method: "GET",
     path: "/profile",
-    handler: (req, res) => {}
-};
+    handler: profile.profile
+  }
 
 module.exports = {
     profileGET: profileGET
