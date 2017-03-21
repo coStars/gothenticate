@@ -6,6 +6,7 @@ function getUserByEmail(email, cb) {
 }
 
 function createUser(data, cb) {
+
     /*
   data type Object
   Object {
