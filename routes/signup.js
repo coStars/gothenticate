@@ -1,3 +1,5 @@
+const signUp = require('../handlers/Signup.js')
+const validation = require('../handlers/Validation');
 const signupGET ={
   method:"GET",
   path:"/signup",
@@ -7,10 +9,11 @@ const signupGET ={
 const signupPOST ={
   method:"POST",
   path:"/signup",
-  handler:(req,res)=>{
-
-
-
+  handler:signUp.signUp,
+  config :{
+    validate : {
+      payload : validation.signupValidation
+    }
   }
 };
 
