@@ -1,0 +1,31 @@
+{
+  "name": "gothenticate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coStars/gothenticate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coStars/gothenticate/issues"
+  },
+  "homepage": "https://github.com/coStars/gothenticate#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "codeclimate": "0.0.32",
+    "env2": "^2.1.1",
+    "hapi": "^16.1.0",
+    "hapi-jwt": "^1.0.2",
+    "inert": "^4.1.0",
+    "istanbul": "^0.4.5",
+    "joi": "^10.2.2",
+    "pg": "^6.1.5",
+    "vision": "^4.1.1"
+  }
+}
