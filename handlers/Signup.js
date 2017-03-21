@@ -3,9 +3,11 @@ function signUp(req, res) {
     check if email exist
     GetUserByEmail();
 
+
 */
-    }
+}
+
 module.exports = {
-signUp : signUp
+    signUp: signUp
 
 }
