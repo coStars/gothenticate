@@ -1,17 +1,21 @@
-const config  = {
-  /*
-  data base information
-  password :
-  user:
-  database:
-  port
-  */
-
+const pg = require('pg');
+const config = {
+    password: '123654',
+    user: 'postgres',
+    database: 'gothenticate',
+    port: 5432
 }
-function connecToDatabase(config,cb) {
-  // cb the client
-
+ function connecToDatabase(config, cb) {
+    var client = new pg.Client(config);
+    client.connect((errConn) => {
+        if (errConn) {
+            cb(errConn, undefiend)
+        }
+    });
+    return client;
 }
 module.exports = {
-  connecToDatabase : connecToDatabase
+    client: connecToDatabase(config,(errConn)=>{
+      
+    })
 }
