@@ -1,5 +1,8 @@
+const client = require('./config.js');
+const dbUtils = require('./db.utils.js');
+
 function getUserByEmail(email, cb) {
-    cb()
+    dbUtils.select(client.client, 'users', `email='${email}'`, cb)
 }
 
 function createUser(data, cb) {
