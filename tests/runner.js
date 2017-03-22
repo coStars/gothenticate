@@ -1,2 +1,2 @@
-//require('./db.utils.test.js');
-require('./routes.test.js');
+require('./db.utils.test.js');
+//require('./routes.test.js');

@@ -13,6 +13,5 @@ module.exports = function (config) {
             throw errConn;
         }
     });
-    console.log("client in config",client);
     return client;
 }

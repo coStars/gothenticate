@@ -1,7 +1,7 @@
 const table = require('./sql.js');
 
 function createTable(client, cb) {
-    const tables = `${table.users}`
+    const tables = `${table.users} ${table.sessions}`
 
     client.query(tables, cb);
 }
@@ -9,10 +9,10 @@ function createTable(client, cb) {
 function insert(client, table, data, cb) {
     const d = conversion(data);
     const query = `INSERT INTO ${table} ${d}`
-    client.query(query, (errSelect, result) => {
-        if (errSelect) {
-            console.log("errINSERT", errINSERT);
-            cb(errINSERT);
+    client.query(query, (errInsert, result) => {
+        if (errInsert) {
+            console.log("errINSERT", errInsert);
+            cb(errInsert);
         }
     });
 }
