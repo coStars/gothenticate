@@ -5,8 +5,8 @@ const signup = require('../routes/signup.js');
 module.exports = [
     login.loginPOST,
     login.loginGET,
-    // logout.logout,
-    // profile.profile,
-    // signup.signupGET,
-    // signup.signupPOST
-]
+    logout.logout,
+    profile.profileGET,
+    signup.signupGET,
+    signup.signupPOST
+];

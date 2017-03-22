@@ -6,11 +6,7 @@ function getUserByEmail(client,email, cb) {
 }
 
 function createUser(client,data, cb) {
-    dbUtils.insert(client, 'users', {
-        username: username,
-        email: email,
-        password
-    }, cb);
+    dbUtils.insert(client, 'users', data, cb);
 }
 
 function updateUserInfo(client,data, cb) {
