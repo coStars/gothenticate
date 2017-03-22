@@ -1,6 +1,7 @@
-var client = require('../database/config.js');
-var db = require('../database/db.utils.js');
-db.createTable(client(), function(errTable, resTable) {
+const client = require ('../database/config.js');
+const db = require('../database/db.utils.js');
+
+db.createTable(client, function(errTable, resTable) {
 
   if(errTable) {
     console.log('error while trying to create tables');
