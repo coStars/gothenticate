@@ -15,6 +15,7 @@ const config = {
     }
 }
 
+
 const pool = new pg.Pool(config.local);
 const query = (text, cb) => pool.connect((err, client, done) => {
     if (err) {

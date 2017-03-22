@@ -9,10 +9,11 @@ function createTable(client, cb) {
 function insert(client, table, data, cb) {
     const d = conversion(data);
     const query = `INSERT INTO ${table} ${d}`
-    client.query(query, (errSelect, result) => {
-        if (errSelect) {
-            console.log("errINSERT", errSelect);
-            cb(errINSERT);
+
+    client.query(query, (errInsert, result) => {
+        if (errInsert) {
+            console.log("errINSERT", errInsert);
+            cb(errInsert);
         }
     });
 }
