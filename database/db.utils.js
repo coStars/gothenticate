@@ -1,14 +1,10 @@
 const table = require('./sql.js');
 
 function createTable(client, cb) {
-    const tables = `${table.users} ${table.sessions}`
+    const tables = `${table.users}`
+
     client.query(tables, cb);
 }
-const userData = {
-    username: "user",
-    email: "email",
-    password: "password"
-};
 
 function insert(client, table, data, cb) {
     const d = conversion(data);

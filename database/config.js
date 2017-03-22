@@ -5,12 +5,14 @@ const config = {
     database: 'gothenticate',
     port: 5432
 }
-module.exports = function connecToDatabase(config, cb) {
+
+module.exports = function (config) {
     var client = new pg.Client(config);
     client.connect((errConn) => {
         if (errConn) {
-            cb(errConn, undefiend)
+            throw errConn;
         }
     });
+    console.log("client in config",client);
     return client;
 }
