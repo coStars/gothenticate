@@ -7,7 +7,8 @@ function signUp(req, res) {
             user.createUser(req.payload, cb)
             req.view('profile');
         } else {
-            req.view('login');
+
+          reply({text:"email is exist "})
         }
     })
 }
