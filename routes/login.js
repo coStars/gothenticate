@@ -3,13 +3,13 @@ const validation = require('../handlers/Validation');
 const loginGET = {
     method: "GET",
     path: "/",
-    handler: login.login
+    handler: login.loginGET
 };
 
 const loginPOST = {
     method: "POST",
     path: "/login",
-    handler: login.login,
+    handler: login.loginPOST,
     config :{
       validate : {
         payload : validation.loginValidation
