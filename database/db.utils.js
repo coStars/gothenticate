@@ -8,13 +8,8 @@ function createTable(client, cb) {
 
 function insert(client, table, data, cb) {
     const d = conversion(data);
-    const query = `INSERT INTO ${table} ${d}`
-    client.query(query, (errInsert, result) => {
-        if (errInsert) {
-            console.log("errINSERT", errInsert);
-            cb(errInsert);
-        }
-    });
+    const query = `INSERT INTO ${table} ${d}`;
+    client.query(query, cb)
 }
 
 function select(client, table, condition, cb) {
@@ -39,7 +34,7 @@ function SelectSession(client, id, cb) {
 function update(client, table, data, condition, cb) {
     const d = conversionUPDATE(data);
     const query = `UPDATE  ${table} SET ${d} WHERE ${condition};`
-    client.query(table.updateUser, cb);
+    client.query(query, cb);
 }
 
 function conversion(data) {

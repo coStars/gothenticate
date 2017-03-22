@@ -2,21 +2,28 @@ const pg = require('pg');
 const config = {
     local: {
         user: 'postgres',
-        password: '482106',
+        password: '123654',
         database: 'gothenticate',
         port: 5432
     },
-    test: {
-        user: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE_NAME,
-        port: process.env.DATABASE_PORT
+    test : {
+      user: 'postgres',
+      password: '123654',
+      database: 'tests',
+      port: 5432
 
     }
+    // test: {
+    //     user: process.env.DATABASE_USER,
+    //     password: process.env.DATABASE_PASSWORD,
+    //     database: process.env.DATABASE_NAME,
+    //     port: process.env.DATABASE_PORT
+    //
+    // }
 }
 
 
-const pool = new pg.Pool(config.local);
+const pool = new pg.Pool(config.test);
 const query = (text, cb) => pool.connect((err, client, done) => {
     if (err) {
         throw (err);
@@ -28,7 +35,8 @@ const query = (text, cb) => pool.connect((err, client, done) => {
 })
 const client = {
 
-    query: query
+    query: query,
+    pool : pool
 }
 
 module.exports = client;

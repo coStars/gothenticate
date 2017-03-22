@@ -6,11 +6,12 @@
   "scripts": {
     "test": "npm run db:create && npm run migrate && node ./tests/runner.js && npm run db:drop",
       "start": "node scripts/migrate.js && node index.js",
-      "db:create": "psql -c 'CREATE DATABASE gothenticate;' -U postgres -h localhost",
-      "db:drop": "psql -c 'DROP DATABASE gothenticate;' -U postgres -h localhost",
+      "db:create": "psql -c 'CREATE DATABASE tests;' -U postgres -h localhost",
+      "db:drop": "psql -c 'DROP DATABASE tests;' -U postgres -h localhost",
       "migrate": "node scripts/migrate.js",
       "cov": "npm run db:create && npm run migrate && node_modules/.bin/istanbul cover ./tests/runner.js && npm run db:drop",
-      "dev:test": "nodemon ./tests/index.js"
+      "dev:test": "nodemon ./tests/index.js",
+      "alaa" : "node ./tests/runner.js"
   },
   "repository": {
     "type": "git",
