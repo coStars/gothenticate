@@ -7,7 +7,7 @@ function logout(req, res) {
         session.valid = false;
         session.ended = new Date().getTime();
         const data = {
-            session.id: session.id,
+            id: session.id,
             value: JSON.stringify(session)
         }
         dbutils.insert(client, 'session', data, function(err,result){

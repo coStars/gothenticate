@@ -1,4 +1,4 @@
-const user = require('../database/UserHelper.js');
+const user = require('../database/UserHelpers.js');
 const dbutils = require('../database/db.utils.js');
 
 function login(req, res) {
@@ -12,7 +12,7 @@ function login(req, res) {
                 exp: new Date().getTime() + 30 * 60 * 1000 // expires in 30 minutes time
             };
             const data = {
-                session.id: session.id,
+                id: session.id,
                 value: JSON.stringify(session)
             }
             dbutils.insert(client, 'session', data, (err, result) => {
@@ -22,14 +22,13 @@ function login(req, res) {
                         text: 'Check Browser Cookie or Auth Header for your Token (JWT)'
                     })
                     .header("Authorization", token)
-                    .state("token", token, cookie_options
+                    .state("token", token, cookie_options)
 
-                    });)
+                    });
         }
     })
 }
 
-function(request, reply) {}
 module.exports = {
     login: login
 }

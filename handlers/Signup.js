@@ -1,4 +1,4 @@
-const user = require('../database/UserHelper.js')
+const user = require('../database/UserHelpers.js')
 
 function signUp(req, res) {
     const email = req.payload.email;
