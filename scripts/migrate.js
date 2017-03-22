@@ -11,6 +11,6 @@ db.createTable(client.pool, function(errTable, resTable) {
   }
 
   console.log('OK: TABLE CREATED');
-  client.pool.end()
 
+client.pool.end();
 });

@@ -31,12 +31,16 @@ const query = (text, cb) => pool.connect((err, client, done) => {
     client.query(text, (err, result) => {
         done();
         cb(err, result);
+
     })
+
 })
 const client = {
 
     query: query,
-    pool : pool
+
+    pool:pool,
+
 }
 
 module.exports = client;

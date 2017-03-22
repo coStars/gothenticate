@@ -7,9 +7,16 @@ function createTable(client, cb) {
 }
 
 function insert(client, table, data, cb) {
+
     const d = conversion(data);
-    const query = `INSERT INTO ${table} ${d}`;
-    client.query(query, cb)
+    const query = `INSERT INTO ${table} ${d};`
+    client.query(query, (errInsert, result) => {
+        if (errInsert) {
+            console.log("errINSERT", errInsert);
+            cb(errInsert);
+        }
+          cb(undefined, result.rows);
+    });
 }
 
 function select(client, table, condition, cb) {
@@ -19,14 +26,14 @@ function select(client, table, condition, cb) {
             console.log("errSelect", errSelect);
             cb(errSelect);
         }
-        cb(undefined, result.rows);
+        cb(errSelect, result.rows);
     });
 
 }
 
 function SelectSession(client, id, cb) {
     const select = `SELECT value FROM session WHERE id='${id}';`;
-    db.query(client, select, function(err, result) {
+    client.query(select,(err, result)=> {
         cb(err, result.rows);
     });
 }

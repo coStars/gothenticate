@@ -1,14 +1,39 @@
 const user = require('../database/UserHelpers.js')
+const client = require('../database/config.js');
+const hash = require('../database/hash.js');
 
-function signUp(req, res) {
+function signUp(req, reply) {
     const email = req.payload.email;
-    user.getUserByEmail(email, (err, result) => {
-        if (result.length == 0) {
-            user.createUser(req.payload, cb)
-            req.view('profile');
-        } else {
+    const username = req.payload.username;
+    user.getUserByUsername(client, username, (err, result) => {
+        if (result.length > 0) {
+            reply({
+                text: "UserName is exist"
+            })
 
-          reply({text:"email is exist "})
+        } else {
+            user.getUserByEmail(client, email, (err, result) => {
+                if (result.length == 0) {
+
+                    hash(req.payload.password, function(err, hash) {
+                        if (err) {
+                            console.log(err);
+                            return console.error(err);
+                        }
+                        req.payload.password = hash;
+                        user.createUser(client, req.payload, (err, result) => {})
+                    });
+                    reply({
+                        text: "Account Created successfully "
+                    })
+
+                } else {
+
+                    reply({
+                        text: "email is exist "
+                    })
+                }
+            })
         }
     })
 }
