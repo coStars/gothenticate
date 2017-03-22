@@ -1,10 +1,10 @@
 const user = require('../database/UserHelpers.js');
 const dbutils = require('../database/db.utils.js');
 
-function login(req, res) {
+function loginPOST(req, res) {
     user.getUserByPassword(req.payload.email, req.payload.password, (err, result) => {
-        if (result.length == 0) {
-            req.view('login')
+        if (res.length == 0) {
+
         } else {
             var session = {
                 valid: true, // this will be set to false when the person logs out
@@ -28,8 +28,14 @@ function login(req, res) {
         }
     })
 }
+function loginGET(req, reply) {
+  //
+  reply({text: "HELLLLO"})
+
+}
 
 module.exports = {
-    login: login
+    loginGET: loginGET,
+    loginPOST : loginPOST
 
 }
