@@ -1,5 +1,7 @@
 function profile(req, res) {
-    res.view('profile')
+  reply({
+                 text: 'You used a Token!'
+             });
     }
 module.exports = {
 profile : profile

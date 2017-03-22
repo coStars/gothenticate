@@ -32,12 +32,14 @@ function select(client, table, condition, cb) {
     });
 
 }
-function SelectSession(client,id, cb) {
+
+function SelectSession(client, id, cb) {
     const select = `SELECT value FROM session WHERE id='${id}';`;
     db.query(client, select, function(err, result) {
         cb(err, result.rows);
     });
 }
+
 function update(client, table, data, condition, cb) {
     const d = conversionUPDATE(data);
     const query = `UPDATE  ${table} SET ${d} WHERE ${condition};`
@@ -80,5 +82,5 @@ module.exports = {
     insert: insert,
     select: select,
     update: update,
-    SelectSession:SelectSession
+    SelectSession: SelectSession
 }

@@ -15,7 +15,8 @@ function logout(req, res) {
           return reply({
                   text: 'You have been logged out'
               })
-              .unstate('token', cookie_options);
+              .unstate('token', cookie_options)
+              .code(302)
         });
 
     })
