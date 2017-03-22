@@ -3,11 +3,6 @@ const table = require('./sql.js');
 function createTable(client, cb) {
     const tables = `${table.users} ${table.sessions}`
     client.query(tables, cb);
-
-    /*
-query sentence to insert into table
-cb the error
-  */
 }
 const userData = {
     username: "user",
@@ -24,7 +19,6 @@ function insert(client, table, data, cb) {
             cb(errINSERT);
         }
     });
-
 }
 
 function select(client, table, condition, cb) {
@@ -38,11 +32,18 @@ function select(client, table, condition, cb) {
     });
 
 }
+function SelectSession(client,id, cb) {
+    const select = `SELECT value FROM session WHERE id='${id}';`;
+    db.query(client, select, function(err, result) {
+        cb(err, result.rows);
+    });
+}
 function update(client, table, data, condition, cb) {
-    const d =conversionUPDATE(data);
-        const query = `UPDATE  ${table} SET ${d} WHERE ${condition};`
+    const d = conversionUPDATE(data);
+    const query = `UPDATE  ${table} SET ${d} WHERE ${condition};`
     client.query(table.updateUser, cb);
-  }
+}
+
 function conversion(data) {
     const columns = arraytoString(Object.keys(data));
     const values = arraytoString(Object.keys(data).map((elm) => data[elm]))
@@ -53,6 +54,7 @@ function conversionUPDATE(data) {
     const columns = arraytoString(Object.keys(data), Object.keys(data).map((elm) => data[elm]));
     return `${columns}`;
 }
+
 function arraytoString(array, array2) {
     return array.reduce(function(prev, curr, index) {
         prev += (curr + "=" + `'${array2[index]}'`);
@@ -62,6 +64,7 @@ function arraytoString(array, array2) {
         return prev;
     }, '');
 }
+
 function arraytoString(array) {
     return array.reduce(function(prev, curr, index) {
         prev = prev + curr
@@ -71,9 +74,11 @@ function arraytoString(array) {
         return prev;
     }, "");
 }
+
 module.exports = {
     createTable: createTable,
     insert: insert,
     select: select,
-    update: update
+    update: update,
+    SelectSession:SelectSession
 }
