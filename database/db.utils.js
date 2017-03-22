@@ -12,7 +12,7 @@ function insert(client, table, data, cb) {
     client.query(query, (errSelect, result) => {
         if (errSelect) {
             console.log("errINSERT", errSelect);
-            cb(errINSERT);
+            cb(errSelect);
         }
     });
 }
