@@ -2,7 +2,7 @@ const login = require('../handlers/Login.js');
 const validation = require('../handlers/Validation');
 const loginGET = {
     method: "GET",
-    path: "/login",
+    path: "/",
     handler: login.login
 };
 
