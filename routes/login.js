@@ -1,12 +1,13 @@
 const login = require('../handlers/Login.js');
 const validation = require('../handlers/Validation.js');
+
 const loginGET = {
     method: "GET",
     path: "/",
     handler: login.loginGET,
     config: {
         auth: false
-    }
+    },
 
 };
 
@@ -23,6 +24,7 @@ const loginPOST = {
 
 }
 module.exports = {
+    loginGET: loginGET,
     loginPOST: loginPOST,
-    loginGET: loginGET
+
 }
