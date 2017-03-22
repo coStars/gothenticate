@@ -1,42 +1,24 @@
 const client = require('./config.js');
 const dbUtils = require('./db.utils.js');
 
-function getUserByEmail(email, cb) {
+function getUserByEmail(client,email, cb) {
     dbUtils.select(client, 'users', `email='${email}'`, cb)
 }
 
-function createUser(data, cb) {
-
-    /*
-  data type Object
-  Object {
-  username type String ,
-  password type String ,
-  email    type String ,
-  bio      type String
-}
-    */
-    cb()
+function createUser(client,data, cb) {
+    dbUtils.insert(client, 'users', {
+        username: username,
+        email: email,
+        password
+    }, cb);
 }
 
-function updateUserInfo(data, cb) {
-    /*
-     data type object
-     Object {
-     data type Object
-     Object {
-     username type String ,
-     password type String ,
-     email    type String ,
-     bio      type String
-      }
-      data.map (val){
-      update database set val new val
-    }
-    */
+function updateUserInfo(client,data, cb) {
+
+dbUtils.update(client,'users', data, 'id=', cb);
 }
 module.exports = {
-  getUserByEmail : getUserByEmail,
-  updateUserInfo : updateUserInfo,
-  createUser : createUser
+    getUserByEmail: getUserByEmail,
+    updateUserInfo: updateUserInfo,
+    createUser: createUser
 }
