@@ -1,15 +1,18 @@
 const user = require('../database/UserHelpers.js');
 const dbutils = require('../database/db.utils.js');
+const aguid = require('aguid');
 
 function loginPOST(req, res) {
     user.getUserByPassword(req.payload.email, req.payload.password, (err, result) => {
         if (res.length == 0) {
-
+            reply({
+                text: "The Email or the Password are incorect"
+            })
         } else {
             var session = {
-                valid: true, // this will be set to false when the person logs out
-                id: aguid(), // a random session id
-                exp: new Date().getTime() + 30 * 60 * 1000 // expires in 30 minutes time
+                valid: true,
+                id: aguid(),
+                exp: new Date().getTime() + 30 * 60 * 1000
             };
             const data = {
                 id: session.id,
@@ -19,23 +22,29 @@ function loginPOST(req, res) {
                 var token = JWT.sign(session, process.env.JWT_SECRET); // synchronous
                 console.log("token", token);
                 reply({
-                        text: 'Check Browser Cookie or Auth Header for your Token (JWT)'
+                        text:"Login successful"
                     })
                     .header("Authorization", token)
                     .state("token", token, cookie_options)
+                    .code(302)
 
             });
         }
     })
 }
+
 function loginGET(req, reply) {
-  //
-  reply({text: "HELLLLO"})
+    //
+  
+
+    reply({
+        text: "HELLLLO"
+    })
 
 }
 
 module.exports = {
     loginGET: loginGET,
-    loginPOST : loginPOST
+    loginPOST: loginPOST
 
 }

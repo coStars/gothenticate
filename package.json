@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/coStars/gothenticate#readme",
   "dependencies": {
+    "aguid": "^2.0.0",
     "bcrypt": "^1.0.2",
     "codeclimate": "0.0.32",
     "env2": "^2.1.1",
