@@ -1,5 +1,7 @@
+const client = require('./config.js');
+const dbutils = require('./db.utils.js');
 var validate = function(decoded, request, callback) {
-    handler.SelectSession(decoded.id, function(rediserror, reply) {
+    dbutils.SelectSession(client,decoded.id, function(rediserror, reply) {
         var session;
         if (reply) {
             session = reply;
@@ -16,7 +18,5 @@ var validate = function(decoded, request, callback) {
     });
 };
 module.exports = {
-    getSessionById: getSessionById,
-    addSession: addSession,
     validate:validate
 }

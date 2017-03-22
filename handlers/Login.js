@@ -35,7 +35,7 @@ function loginPOST(req, res) {
 
 function loginGET(req, reply) {
     //
-  
+
 
     reply({
         text: "HELLLLO"
