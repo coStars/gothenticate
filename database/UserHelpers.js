@@ -1,10 +1,17 @@
 
 const dbUtils = require('./db.utils.js');
 
-function getUserByEmail(client,email, cb) {
+function getUserByEmail(client, email, cb) {
     dbUtils.select(client, 'users', `email='${email}'`, cb)
 }
 
+function getUserById(client, id, cb) {
+    dbUtils.select(client, 'users', `id='${id}'`, cb)
+}
+
+function getUserByUsername(client,username, cb) {
+    dbUtils.select(client, 'users', `username='${username}'`, cb)
+}
 function createUser(client,data, cb) {
     dbUtils.insert(client, 'users', data, cb);
 }
@@ -20,5 +27,7 @@ module.exports = {
     getUserByEmail: getUserByEmail,
     updateUserInfo: updateUserInfo,
     createUser: createUser,
-    getUserByPassword:getUserByPassword
+    getUserByPassword:getUserByPassword,
+    getUserByUsername:getUserByUsername,
+    getUserById:getUserById
 }

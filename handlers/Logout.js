@@ -1,4 +1,4 @@
-function logout(req, res) {
+function logout(request, reply) {
     const dbutils = require('../database/db.utils.js');
     var session;
     dbutils.SelectSession(request.auth.credentials.id, function(rediserror, redisreply) {
