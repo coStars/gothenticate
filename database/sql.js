@@ -4,6 +4,8 @@ const addUser = "INSERT INTO users (username,email, password) VALUES ('alaa','al
 const getUser = "SELECT * FROM users;";
 const updateUser = "UPDATE  users SET username = 'newalaaa' WHERE username = 'alaa' ;"
 
+const
+
 module.exports = {
   users : users,
   sessions : sessions,
