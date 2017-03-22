@@ -24,7 +24,7 @@ function login(req, res) {
                     .header("Authorization", token)
                     .state("token", token, cookie_options)
 
-                    });
+            });
         }
     })
 }
