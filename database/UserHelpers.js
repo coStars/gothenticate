@@ -1,4 +1,4 @@
-const client = require('./config.js');
+
 const dbUtils = require('./db.utils.js');
 
 function getUserByEmail(client,email, cb) {
@@ -19,5 +19,6 @@ dbUtils.update(client,'users', data, 'id=', cb);
 module.exports = {
     getUserByEmail: getUserByEmail,
     updateUserInfo: updateUserInfo,
-    createUser: createUser
+    createUser: createUser,
+    getUserByPassword:getUserByPassword
 }

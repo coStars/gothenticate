@@ -1,7 +1,7 @@
 const table = require('./sql.js');
 
 function createTable(client, cb) {
-    const tables = `${table.users}`
+    const tables = `${table.users} ${table.sessions}`
 
     client.query(tables, cb);
 }
@@ -11,7 +11,7 @@ function insert(client, table, data, cb) {
     const query = `INSERT INTO ${table} ${d}`
     client.query(query, (errSelect, result) => {
         if (errSelect) {
-            console.log("errINSERT", errINSERT);
+            console.log("errINSERT", errSelect);
             cb(errINSERT);
         }
     });
@@ -44,9 +44,10 @@ function update(client, table, data, condition, cb) {
 
 function conversion(data) {
     const columns = arraytoString(Object.keys(data));
-    const values = arraytoString(Object.keys(data).map((elm) => data[elm]))
+    const values = arraytoString(Object.keys(data).map((elm) =>typeof data[elm] ==='string'?`'${data[elm]}'`:data[elm]))
     return `(${columns}) values (${values})`;
 }
+
 
 function conversionUPDATE(data) {
     const columns = arraytoString(Object.keys(data), Object.keys(data).map((elm) => data[elm]));
