@@ -1,5 +1,5 @@
 const hapi = require('hapi');
-const router = require('../routes/router.js');
+const router = require('./routes/router.js');
 
 const server = new hapi.Server();
 require ('env2')('.env');

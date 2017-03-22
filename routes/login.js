@@ -1,9 +1,9 @@
 const login = require('../handlers/Login.js');
 const validation = require('../handlers/Validation');
 const loginGET = {
-    method: "",
-    path: "/login",
-    handler: (req, res) => {}
+    method: "GET",
+    path: "/",
+    handler: login.login
 };
 
 const loginPOST = {
