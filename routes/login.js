@@ -1,11 +1,11 @@
 const login = require('../handlers/Login.js');
-const validation = require('../handlers/Validation');
+const validation = require('../handlers/Validation.js');
 const loginGET = {
     method: "GET",
     path: "/",
     handler: login.loginGET,
     config: {
-        auth: 'jwt'
+        auth: false
     }
 
 };
@@ -18,7 +18,7 @@ const loginPOST = {
         validate: {
             payload: validation.loginValidation
         },
-        auth: false
+        auth:false
     }
 
 }

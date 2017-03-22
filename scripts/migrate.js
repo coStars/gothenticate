@@ -1,11 +1,7 @@
-const config = {
-    password: '123654',
-    user: 'postgres',
-    database: 'gothenticate',
-    port: 5432
-}
-var client = require('../database/config.js')(config);
-var db = require('../database/db.utils.js');
+
+const client = require ('../database/config.js');
+const db = require('../database/db.utils.js');
+
 db.createTable(client, function(errTable, resTable) {
 
   if(errTable) {

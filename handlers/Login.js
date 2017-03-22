@@ -1,9 +1,15 @@
 const user = require('../database/UserHelpers.js');
 const dbutils = require('../database/db.utils.js');
+const client = require('../database/config.js');
 const aguid = require('aguid');
 
 function loginPOST(req, res) {
-    user.getUserByPassword(req.payload.email, req.payload.password, (err, result) => {
+    const data = {
+        email: req.payload.email,
+        password: req.payload.password
+    }
+    user.getUserByPassword(client,data.email,data.password, (err, result) => {
+        console.log("here");
         if (res.length == 0) {
             reply({
                 text: "The Email or the Password are incorect"
@@ -22,7 +28,7 @@ function loginPOST(req, res) {
                 var token = JWT.sign(session, process.env.JWT_SECRET); // synchronous
                 console.log("token", token);
                 reply({
-                        text:"Login successful"
+                        text: "Login successful"
                     })
                     .header("Authorization", token)
                     .state("token", token, cookie_options)
