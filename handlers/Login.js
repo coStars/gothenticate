@@ -27,7 +27,8 @@ function loginPOST(req, reply) {
     user.getUserByEmail(client, dta.email, (err, result) => {
         if (result.length == 0) {
             reply({
-                Boom.unauthorized('The Email or the Password are incorect');
+
+                Boom.unauthorized('The Email is incorect');
 
             })
         } else {
@@ -55,11 +56,10 @@ function loginPOST(req, reply) {
                     });
 
 
-                } else {
-                    reply(Boom.notFound('Sorry, that username or password is invalid, please try again.'));
-                }
-            });
-
+                      } else {
+                        reply(Boom.notFound('Sorry, invalid username or password, please try again.'));
+                      }
+ });
         }
     });
 }
