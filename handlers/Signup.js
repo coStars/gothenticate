@@ -2,7 +2,7 @@ const user = require('../database/UserHelpers.js')
 const client = require('../database/config.js');
 const hash = require('../database/hash.js');
 
-function signUp(req, reply) {
+function signupPOST(req, reply) {
     const email = req.payload.email;
     const username = req.payload.username;
     user.getUserByUsername(client, username, (err, result) => {
@@ -13,8 +13,11 @@ function signUp(req, reply) {
 
         } else {
             user.getUserByEmail(client, email, (err, result) => {
-                if (result.length == 0) {
-
+                if (result.length > 0) {
+                    reply({
+                        text: "email is exist"
+                    })
+                } else {
                     hash(req.payload.password, function(err, hash) {
                         if (err) {
                             console.log(err);
@@ -24,20 +27,23 @@ function signUp(req, reply) {
                         user.createUser(client, req.payload, (err, result) => {})
                     });
                     reply({
-                        text: "Account Created successfully "
-                    }).code(200)
 
-                } else {
+                        text: "Account Created successfully"
 
-                    reply({
-                        text: "email is exist "
                     })
                 }
             })
         }
     })
 }
+
+function signupGET(req, reply) {
+    reply({
+        text: 'should display signup page'
+    });
+}
 module.exports = {
-    signUp: signUp
+    signupPOST: signupPOST,
+    signupGET: signupGET
 
 }

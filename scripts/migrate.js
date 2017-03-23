@@ -2,7 +2,7 @@
 const client = require ('../database/config.js');
 const db = require('../database/db.utils.js');
 
-db.createTable(client, function(errTable, resTable) {
+db.createTable(client.pool, function(errTable, resTable) {
 
   if(errTable) {
     console.log('error while trying to create tables');
@@ -11,5 +11,6 @@ db.createTable(client, function(errTable, resTable) {
   }
 
   console.log('OK: TABLE CREATED');
+
 client.pool.end();
 });

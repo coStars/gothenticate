@@ -3,13 +3,16 @@ const validation = require('../handlers/Validation');
 const signupGET = {
     method: "GET",
     path: "/signup",
-    handler: (req, res) => {}
+    handler: signUp.signupGET,
+    config: {
+        auth: false
+    },
 };
 
 const signupPOST = {
     method: "POST",
     path: "/signup",
-    handler: signUp.signUp,
+    handler: signUp.signupPOST,
     config: {
         validate: {
             payload: validation.signupValidation
@@ -20,6 +23,6 @@ const signupPOST = {
 };
 
 module.exports = {
-    signupGET: signupGET,
-    signupPOST: signupPOST
+    signupPOST: signupPOST,
+    signupGET : signupGET
 }
