@@ -26,9 +26,9 @@ function loginPOST(req, reply) {
     }
     user.getUserByEmail(client, dta.email, (err, result) => {
         if (result.length == 0) {
-            reply({
-                Boom.unauthorized('The Email is incorect');
-            })
+            reply(
+                Boom.unauthorized('The Email is incorect')
+            )
         } else {
             Bcrypt.compare(dta.password, result[0].password, (err, isValid) => {
                 if (!err && isValid) {
