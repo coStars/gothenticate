@@ -27,7 +27,7 @@ function loginPOST(req, reply) {
     user.getUserByEmail(client, dta.email, (err, result) => {
         if (result.length == 0) {
             reply({
-                text: "The Email or the Password are incorect"
+                text: "The Email is incorect"
             })
         } else {
             Bcrypt.compare(dta.password, result[0].password, (err, isValid) => {
@@ -55,7 +55,7 @@ function loginPOST(req, reply) {
 
 
                       } else {
-                        reply(Boom.notFound('Sorry, that username or password is invalid, please try again.'));
+                        reply(Boom.notFound('Sorry, invalid username or password, please try again.'));
                       }
  });
 
