@@ -2,11 +2,11 @@
 
 **How to run**
 
-    * git clone the file
-    * Install dependencies with npm i
-    * Create database with npm run db:create
-    * migrate tables with npm run migrate
-    * Then run node server.js
+  * git clone the file
+  * Install dependencies with npm i
+  * Create database with npm run db:create
+  * migrate tables with npm run migrate
+  * Then run node server.js
 
 **Key functionality/Features based on user stories**
 ---
@@ -20,6 +20,6 @@
 * [x] Encrypt user password and store it in database.
 
 **Tests**
-- [ ] database functions.
-- [ ] helpers functions.
-- [ ] server routes.
+- [x] database functions.
+- [x] helpers functions.
+- [x] server routes.
