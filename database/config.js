@@ -1,10 +1,10 @@
 const pg = require('pg');
 const config = {
     local: {
-        user: 'postgres',
-        password: '482106',
-        database: 'gothenticate',
-        port: 5432
+        user: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASSWORD,
+        database: process.env.DATABASE_NAME,
+        port: process.env.DATABASE_PORT
     },
     test: {
         user: process.env.DATABASE_USER,
