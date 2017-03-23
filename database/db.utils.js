@@ -40,6 +40,7 @@ function SelectSession(client, id, cb) {
 
 function update(client, table, data, condition, cb) {
     const d = conversionUPDATE(data);
+  //  "UPDATE  users SET username = 'newalaaa' WHERE username = 'alaa' ;"
     const query = `UPDATE  ${table} SET ${d} WHERE ${condition};`
     client.query(query, cb);
 }

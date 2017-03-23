@@ -27,7 +27,7 @@ function loginPOST(req, reply) {
     user.getUserByEmail(client, data.email, (err, result) => {
         if (result.length == 0) {
             reply({
-                text: "The Email or the Password are incorect"
+                text: "The Email or the Password are incorrect"
             })
         } else {
           console.log=(result, data)

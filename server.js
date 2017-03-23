@@ -10,7 +10,7 @@ const server = new hapi.Server();
 server.connection({
     port: process.env.PORT || 3000
 });
-server.register([hapiAuthJWT,inert], (err) => {
+server.register([hapiAuthJWT, inert], (err) => {
     assert(!err); // halt if error
     // see: http://hapijs.com/api#serverauthschemename-scheme
     server.auth.strategy('jwt', 'jwt', true, {

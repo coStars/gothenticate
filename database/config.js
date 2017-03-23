@@ -12,18 +12,16 @@ const config = {
       database: 'tests',
       port: 5432
 
-    }
-    // test: {
-    //     user: process.env.DATABASE_USER,
-    //     password: process.env.DATABASE_PASSWORD,
-    //     database: process.env.DATABASE_NAME,
-    //     port: process.env.DATABASE_PORT
-    //
-    // }
+    },
+    heruko : {
+        user: 'nbhpfiwtyuydzt',
+        password: '3bd46e062cc0580ba7f93f7f34ce47fe015b35a053396363f7fdbbc07eafcad8',
+        database: 'd4vhvraq77d00t',
+        host : 'ec2-54-235-123-159.compute-1.amazonaws.com',
+        port: 5432
+      }
 }
-
-
-const pool = new pg.Pool(config.test);
+const pool = new pg.Pool(config.heruko);
 const query = (text, cb) => pool.connect((err, client, done) => {
     if (err) {
         throw (err);
@@ -31,16 +29,11 @@ const query = (text, cb) => pool.connect((err, client, done) => {
     client.query(text, (err, result) => {
         done();
         cb(err, result);
-
     })
-
 })
 const client = {
-
     query: query,
-
     pool:pool,
-
 }
 
 module.exports = client;
