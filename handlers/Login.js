@@ -27,9 +27,7 @@ function loginPOST(req, reply) {
     user.getUserByEmail(client, dta.email, (err, result) => {
         if (result.length == 0) {
             reply({
-
                 Boom.unauthorized('The Email is incorect');
-
             })
         } else {
             Bcrypt.compare(dta.password, result[0].password, (err, isValid) => {
@@ -60,6 +58,7 @@ function loginPOST(req, reply) {
                         reply(Boom.notFound('Sorry, invalid username or password, please try again.'));
                       }
  });
+
         }
     });
 }
