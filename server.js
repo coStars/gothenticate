@@ -8,6 +8,11 @@ const inert = require('inert');
 require('env2')('.env');
 const server = new hapi.Server();
 server.connection({
+    routes: {
+        cors: {
+            origin: ['*']
+        }
+    },
     port: process.env.PORT || 3000
 });
 server.register([hapiAuthJWT, inert], (err) => {

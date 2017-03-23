@@ -18,7 +18,8 @@ const config = {
         password: '3bd46e062cc0580ba7f93f7f34ce47fe015b35a053396363f7fdbbc07eafcad8',
         database: 'd4vhvraq77d00t',
         host : 'ec2-54-235-123-159.compute-1.amazonaws.com',
-        port: 5432
+        port: 5432,
+        ssl: true
       }
 }
 const pool = new pg.Pool(config.heruko);
