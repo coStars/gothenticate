@@ -1,5 +1,5 @@
+const dbutils = require('../database/db.utils.js');
 function logout(request, reply) {
-    const dbutils = require('../database/db.utils.js');
     var session;
     dbutils.SelectSession(request.auth.credentials.id, function(rediserror, redisreply) {
         session = redisreply;
@@ -20,7 +20,6 @@ function logout(request, reply) {
         });
 
     })
-}
 }
 module.exports = {
     logout: logout

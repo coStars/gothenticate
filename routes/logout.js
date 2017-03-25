@@ -1,9 +1,12 @@
+const logOut = require('../handlers/Logout.js');
 const logout = {
     method: "POST",
     path: "/logout",
-    handler: (req, res) => {}
+    handler: logOut.logout,
+    config : {
+        auth : 'jwt'
+    }
 }
-
 
 module.exports = {
     logout: logout

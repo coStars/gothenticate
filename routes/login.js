@@ -7,8 +7,7 @@ const loginGET = {
     handler: login.loginGET,
     config: {
         auth: false
-    },
-
+    }
 };
 
 const loginPOST = {

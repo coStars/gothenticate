@@ -56,12 +56,13 @@ test('POST/signup : signup with INVALID password', (t) => {
     })
 })
 test('POST/signup : signup with VALID email,username and password', (t) => {
-  const data = generateUserPayload();
+    const newData = generateUserPayload();
     const option = {
         method: 'POST',
         url: '/signup',
-        payload: data
+        payload: newData,
     };
+
     server.inject(option, (response) => {
         const check = JSON.parse(response.payload);
         t.deepEqual(check.text, 'Account Created successfully', 'add user acount correctly');
@@ -84,8 +85,9 @@ test('POST/signup : signup with  email that already exist', (t) => {
       };
       server.inject(option, (response) => {
         const check = JSON.parse(response.payload);
-        t.deepEqual(check.text, 'email is exist', 'email is already exist');
-        t.equal(response.statusCode, 200, 'get statusCode correctly');
+        t.deepEqual(check.error, 'Conflict', 'erorr Conflict')
+        t.deepEqual(check.message, 'This email is already registered', 'email is already exist');
+        t.equal(response.statusCode, 409, 'get statusCode correctly');
         t.end();
       })
     });
@@ -104,12 +106,12 @@ test('POST/signup : signup with  username that already exist', (t) => {
         method: 'POST',
         url: '/signup',
         payload: newData
-        //'username=alaaAhmed&email=alaa@hotmail.com&password=123654789'
     };
     server.inject(option, (response) => {
         const check = JSON.parse(response.payload);
-        t.deepEqual(check.text, 'UserName is exist', 'username is already exist');
-        t.equal(response.statusCode, 200, 'get statusCode correctly');
+        t.deepEqual(check.error, 'Conflict', 'erorr Conflict')
+        t.deepEqual(check.message, 'This username has already been used', 'username has already been used');
+        t.equal(response.statusCode, 409, 'get statusCode correctly');
         t.end();
         console.log('******************* Test signup route successfully ***************');
     })
