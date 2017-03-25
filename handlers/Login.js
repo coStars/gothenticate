@@ -19,7 +19,6 @@ var cookie_options = {
 }
 
 function loginPOST(req, reply) {
-
     const dta = {
         email: req.payload.email,
         password: req.payload.password
@@ -27,7 +26,7 @@ function loginPOST(req, reply) {
     user.getUserByEmail(client, dta.email, (err, result) => {
         if (result.length == 0) {
             reply(
-                Boom.unauthorized('The Email is incorect')
+                Boom.unauthorized('The email is not correct')
             )
         } else {
             Bcrypt.compare(dta.password, result[0].password, (err, isValid) => {
@@ -43,22 +42,18 @@ function loginPOST(req, reply) {
                         value: JSON.stringify(session)
                     }
                     dbutils.insert(client, 'session', data, (err, result) => {
-                        console.log(result);
                         var token = JWT.sign(session, process.env.JWT_SECRET); // synchronous
                         reply({
-                                text: "Login successful"
+                                text: "Login successfuly"
                             })
                             .header("Authorization", token)
                             .state("token", token, cookie_options)
                             .code(200)
                     });
-
-
-                      } else {
-                        reply(Boom.notFound('Sorry, invalid username or password, please try again.'));
-                      }
- });
-
+                } else {
+                    reply(Boom.notFound('The password is not correct'));
+                }
+            });
         }
     });
 }

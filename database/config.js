@@ -22,7 +22,7 @@ const config = {
         ssl: true
       }
 }
-const pool = new pg.Pool(config.heruko);
+const pool = new pg.Pool(config.test);
 const query = (text, cb) => pool.connect((err, client, done) => {
     if (err) {
         throw (err);

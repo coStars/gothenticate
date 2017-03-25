@@ -19,13 +19,13 @@ function createUser(client,data, cb) {
 function getUserByPassword(client,email,password, cb) {
     dbUtils.select(client, 'users', `email='${email}' AND password='${password}' `, cb)
 }
-function updateUserInfo(client,data, cb) {
-
-dbUtils.update(client,'users', data, 'id=', cb);
-}
+// function updateUserInfo(client,data, cb) {
+//
+// dbUtils.update(client,'users', data, 'id=', cb);
+// }
 module.exports = {
     getUserByEmail: getUserByEmail,
-    updateUserInfo: updateUserInfo,
+  //  updateUserInfo: updateUserInfo,
     createUser: createUser,
     getUserByPassword:getUserByPassword,
     getUserByUsername:getUserByUsername,
